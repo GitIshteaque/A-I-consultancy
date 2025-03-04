@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
-    // Force date-fns to version 2.30.0
+    // Ensure proper resolution of date-fns for react-day-picker
     config.resolve.alias = {
       ...config.resolve.alias,
       'date-fns': require.resolve('date-fns')
@@ -10,6 +10,8 @@ const nextConfig = {
     
     return config;
   },
+  // Add transpilePackages to ensure proper compilation
+  transpilePackages: ['react-day-picker']
 };
 
 module.exports = nextConfig; 
